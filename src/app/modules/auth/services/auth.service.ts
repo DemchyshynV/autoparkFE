@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 
-import {ILogin, IToken} from '../interfaces';
+import {ILogin, IRegister, IToken} from '../interfaces';
 import {URL} from '../../../config';
 
 
@@ -22,6 +22,10 @@ export class AuthService {
       .pipe(
         tap((tokens: IToken) => this.setTokens(tokens))
       );
+  }
+
+  register(user: IRegister): Observable<void> {
+    return this.httpClient.post<void>(`${URL}/auth/register`, user);
   }
 
   refreshToken(): Observable<IToken> {

@@ -1,0 +1,7 @@
+<form [formGroup]="form">
+  <div>username: <input type="text" formControlName="username"></div>
+  <div>email: <input type="email" formControlName="email"></div>
+  <div>password: <input type="password" formControlName="password"></div>
+  <div *ngIf="err">{{err|json}}</div>
+  <button (click)="register(form)">Register</button>
+</form>
